@@ -1,0 +1,23 @@
+parameters:
+    level: 8
+    paths:
+        - src
+        - bin
+    excludePaths:
+        - data/*
+        - results/*
+        - vendor/*
+    treatPhpDocTypesAsCertain: false
+    ignoreErrors:
+        # FFI methods are declared dynamically via FFI::cdef("...").
+        - identifier: method.notFound
+          message: '#Call to an undefined method FFI::(open|close|mmap|munmap|cast)\(\)#'
+        # SplFixedArray<TValue> generics — we use it untyped on purpose.
+        -
+            message: '#with generic class SplFixedArray does not specify its types#'
+            identifier: missingType.generics
+        # Defensive null checks on FFI::cast() return — PHPStan stubs say it
+        # cannot return null, but the manual disagrees, so we keep the guard.
+        -
+            message: '#Strict comparison using === between FFI\\CData and null will always evaluate to false#'
+            identifier: identical.alwaysFalse

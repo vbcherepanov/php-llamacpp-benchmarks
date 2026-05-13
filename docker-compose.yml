@@ -1,0 +1,48 @@
+services:
+  php:
+    build:
+      context: .
+    image: php-llama-bench
+    working_dir: /app
+    volumes:
+      - .:/app
+      - composer-cache:/root/.composer/cache
+    environment:
+      DATABASE_URL: "pgsql:host=postgres;port=5432;dbname=bench"
+      DB_USER: bench
+      DB_PASSWORD: bench
+      PGHOST: postgres
+      PGUSER: bench
+      PGPASSWORD: bench
+      PGDATABASE: bench
+    depends_on:
+      postgres:
+        condition: service_healthy
+    tty: true
+    stdin_open: true
+    init: true
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: bench
+      POSTGRES_PASSWORD: bench
+      POSTGRES_DB: bench
+    command:
+      - postgres
+      - -c
+      - fsync=off
+      - -c
+      - synchronous_commit=off
+      - -c
+      - full_page_writes=off
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bench -d bench -h 127.0.0.1"]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  composer-cache:

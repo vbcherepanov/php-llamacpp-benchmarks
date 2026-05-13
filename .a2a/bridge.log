@@ -1,0 +1,2 @@
+{"time":"2026-05-13T17:31:43.22019+02:00","level":"INFO","msg":"a2a server listening","agent":"claude-ttys000","id":"2c48b5a8-334a-4239-8c09-d775dccf57ad","state_dir":"/Users/vitalii-macpro/PROJECT/php-llama-bench/.a2a","url":"http://127.0.0.1:51815","tls":false}
+{"time":"2026-05-13T17:31:43.220461+02:00","level":"INFO","msg":"mcp stdio server starting","agent":"claude-ttys000","id":"2c48b5a8-334a-4239-8c09-d775dccf57ad","state_dir":"/Users/vitalii-macpro/PROJECT/php-llama-bench/.a2a"}

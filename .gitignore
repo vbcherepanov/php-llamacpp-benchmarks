@@ -1,0 +1,10 @@
+/vendor/
+/data/*
+!/data/.gitkeep
+/results/results.json
+/results/results.md
+.idea/
+.vscode/
+.phpstan.cache/
+*.cache
+composer.lock

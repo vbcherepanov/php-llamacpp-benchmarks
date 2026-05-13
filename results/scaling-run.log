@@ -1,0 +1,70 @@
+
+=== B01 ===
+  1M    naive     ...  ok   [load=46.16 ms heap=16.00 MB, 98.02 ms]
+  1M    optimized ...  ok   [load=565.38 µs heap=0 B, 64.49 ms]
+  10M   naive     ...  ok   [load=454.29 ms heap=256.00 MB, 513.84 ms]
+  10M   optimized ...  ok   [load=1.10 ms heap=0 B, 256.07 ms]
+  50M   naive     ...  ok   [load=3.018 s heap=1.00 GB, 12.425 s]
+  50M   optimized ...  ok   [load=222.46 µs heap=0 B, 1.212 s]
+  100M  naive     ...  ok   [load=5.406 s heap=2.00 GB, 23.522 s]
+  100M  optimized ...  ok   [load=703.00 µs heap=0 B, 2.573 s]
+  250M  naive     ...  ok   [load=0 ns heap=0 B, 21.745 s]
+  250M  optimized ...  ok   [load=86.75 ms heap=0 B, 1.995 s]
+  500M  naive     ...  ok   [load=0 ns heap=0 B, 39.657 s]
+  500M  optimized ...  ok   [load=149.16 ms heap=0 B, 2.500 s]
+  1B    naive     ...  ok   [load=0 ns heap=0 B, 77.922 s]
+  1B    optimized ...  ok   [load=228.55 ms heap=0 B, 1.989 s]
+
+=== B02 ===
+  1M    naive     ...  ok   [peak=24.01 MB iter=1.27 ms, 29.77 ms]
+  1M    optimized ...  ok   [peak=15.26 MB iter=10.09 ms, 46.91 ms]
+  10M   naive     ...  ok   [peak=256.00 MB iter=12.23 ms, 95.18 ms]
+  10M   optimized ...  ok   [peak=152.59 MB iter=93.80 ms, 238.26 ms]
+  50M   naive     ...  ok   [peak=1.50 GB iter=60.33 ms, 361.33 ms]
+  50M   optimized ...  ok   [peak=762.94 MB iter=482.20 ms, 1.099 s]
+  100M  naive     ...  ok   [peak=3.00 GB iter=120.30 ms, 718.79 ms]
+  100M  optimized ...  ok   [peak=1.49 GB iter=948.60 ms, 2.155 s]
+  250M  naive     ...  ok   [peak=6.00 GB iter=295.21 ms, 1.692 s]
+  250M  optimized ...  ok   [peak=3.73 GB iter=2.384 s, 5.317 s]
+  500M  naive     ...  ok   [peak=12.00 GB iter=630.22 ms, 3.950 s]
+  500M  optimized ...  ok   [peak=7.45 GB iter=5.037 s, 11.246 s]
+  1B    naive     ...  ok   [peak=24.00 GB iter=1.507 s, 10.777 s]
+  1B    optimized ...  ok   [peak=14.90 GB iter=9.733 s, 22.841 s]
+
+=== B05 ===
+  1M    naive     ...  ok   [peak=376.00 MB wall=104.00 ms, 136.85 ms]
+  1M    optimized ...  ok   [peak=0 B wall=87.98 ms, 106.02 ms]
+  5M    naive     ...  ok   [peak=1.88 GB wall=525.26 ms, 603.04 ms]
+  5M    optimized ...  ok   [peak=0 B wall=449.05 ms, 468.09 ms]
+  25M   naive     ...  ok   [peak=9.27 GB wall=3.379 s, 3.686 s]
+  25M   optimized ...  ok   [peak=0 B wall=2.192 s, 2.210 s]
+  100M  naive     ...  OOM   [OOM, 28.599 s]
+  100M  optimized ...  ok   [peak=0 B wall=10.439 s, 10.618 s]
+  500M  naive     ...  OOM   [OOM, 24.903 s]
+  500M  optimized ...  ok   [peak=0 B wall=45.680 s, 45.808 s]
+
+=== B06 ===
+  100K  naive     ...  ok   [ns/rec=80.0 scan=8.00 ms, 55.79 ms]
+  100K  optimized ...  ok   [ns/rec=10.7 scan=1.07 ms, 27.87 ms]
+  500K  naive     ...  ok   [ns/rec=89.3 scan=44.67 ms, 216.56 ms]
+  500K  optimized ...  ok   [ns/rec=9.6 scan=4.79 ms, 74.78 ms]
+  1M    naive     ...  ok   [ns/rec=93.0 scan=93.02 ms, 415.58 ms]
+  1M    optimized ...  ok   [ns/rec=9.6 scan=9.58 ms, 128.70 ms]
+  5M    naive     ...  ok   [ns/rec=88.3 scan=441.70 ms, 2.086 s]
+  5M    optimized ...  ok   [ns/rec=11.5 scan=57.49 ms, 658.29 ms]
+  25M   naive     ...  ok   [ns/rec=92.7 scan=2.317 s, 11.486 s]
+  25M   optimized ...  ok   [ns/rec=9.5 scan=236.68 ms, 2.727 s]
+  50M   naive     ...  ok   [ns/rec=84.9 scan=4.246 s, 27.365 s]
+  50M   optimized ...  ok   [ns/rec=9.7 scan=483.72 ms, 5.490 s]
+  100M  naive     ...  OOM   [OOM, 30.083 s]
+  100M  optimized ...  ok   [ns/rec=9.6 scan=959.53 ms, 11.350 s]
+
+CSV : /app/bin/../results/scaling.csv
+MD  : /app/bin/../results/scaling.md
+Plotting: python3 '/app/bin/plot-scaling.py' '/app/bin/../results/scaling.csv' '/app/bin/../results/charts'
+No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+wrote /app/bin/../results/charts/scaling-B01.png
+wrote /app/bin/../results/charts/scaling-B02.png
+wrote /app/bin/../results/charts/scaling-B05.png
+wrote /app/bin/../results/charts/scaling-B06.png
+Charts: /app/bin/../results/charts/scaling-*.png
